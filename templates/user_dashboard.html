@@ -1,0 +1,30 @@
+<!-- ./templates/user_dashboard.html -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<style>
+    body {
+        background: rgba(245, 245, 245, 0.4);
+    background-image: url("https://img.freepik.com/free-photo/abundant-collection-antique-books-wooden-shelves-generated-by-ai_188544-29660.jpg?size=626&amp;ext=jpg&amp;ga=GA1.1.1546980028.1704240000&amp;semt=sph");
+
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-3" style="margin: 25px">
+        <div class="card bg-light" style="width: 300px">
+            <div class="card-header">Book Issued</div>
+            <div class="card-body">
+                <p class="card-text">No of book issued:{{ issued_book_count }}</p>
+                <a class="btn btn-success" href="/view_issued_book">View Issued Books</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+    <div class="col-md-3"></div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+<!-- ./templates/edit_profile.html -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<br>
+        <center>
+            <h4 class="fw-bold">Edit Profile</h4><br>
+        </center>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 fw-bold">
+                <form action="/edit_profile" method="post">
+                    <div class="form-group">
+                        <label for="username">Name:</label>
+                        <input  style="border-color: black;"  type="text" class="form-control" name="username" value="{{ user_name }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input style="border-color: black;"  type="text" name="email" class="form-control" value="{{ email }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile:</label>
+                        <input style="border-color: black;" type="text" name="mobile" class="form-control" value="{{ mobile }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Address:</label>
+                        <textarea style="border-color: black;" rows="3" cols="40" name="address" class="form-control">{{ address }}</textarea>
+                    </div>
+                    <button type="submit" name="update" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+{% endblock %}

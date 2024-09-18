@@ -1,0 +1,21 @@
+<!-- ./templates/add_category.html -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+<center><h4 class="fw-bold">Add a new Category</h4><br></center>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 fw-bold">
+                <form action="/add_category" method="post">
+                    <div class="form-group">
+                        <label for="name">Category Name:</label>
+                        <input type="text" class="form-control" name="category_name" style="border-color: black;" required>
+                    </div>
+                    <button type="submit" name="add_cat" class="btn btn-primary">Add Catogry</button>
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+{% endblock %}

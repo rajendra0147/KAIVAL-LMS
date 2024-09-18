@@ -1,0 +1,38 @@
+<!-- ./templates/view_registered_book.html -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+<center><h4 class="fw-bold">Registered Book's Detail</h4><br></center>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form>
+                    <table  class="table table-bordered bg-white"  style="text-align: center">
+                        <thead>
+                            <tr>
+                                <th>Sr. No.</th>
+                                <th>Name</th>
+                                <th>ID</th>
+                                <th>Author</th>
+                                <th>Price</th>
+                                <th>Number</th>
+                            </tr>
+                        </thead>
+                        {% for book in books %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ book.book_name }}</td>
+                            <td>{{ book._id }}</td>
+                            <td>{{ book.book_author }}</td>
+                            <td>{{ book.book_price }}</td>
+                            <td>{{ book._id }}</td>
+                        </tr>
+                        {% endfor %}  
+                </table>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+{% endblock %}

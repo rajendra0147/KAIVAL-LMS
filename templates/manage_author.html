@@ -1,0 +1,32 @@
+<!-- ./templates/manage_author.html -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<center><h4 class="fw-bold">Manage Author</h4><br></center>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>ID</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    {% for author in authors %}
+                            <tr>
+                                <td>{{ author.author_name}}</td>
+                                <td>{{ author._id}}</td>
+                                <td><button class="btn btn-primary"><a href="{{ url_for('edit_author', author_id=author._id) }}">Edit</a></button>
+                                <button class="btn btn-danger"><a href="{{ url_for('delete_author', author_id=author._id) }}" onclick="return confirm('Are you sure?')">Delete</a></button></td>
+                            </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+{% endblock %}

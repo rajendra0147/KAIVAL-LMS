@@ -1,0 +1,146 @@
+<!-- ./templates/layout.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Library Management System</title>
+    <link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+{% if current_user.is_authenticated %}
+<style>
+    body {
+        background-image: url("https://img.freepik.com/free-photo/abundant-collection-antique-books-wooden-shelves-generated-by-ai_188544-29660.jpg?size=626&amp;ext=jpg&amp;ga=GA1.1.1546980028.1704240000&amp;semt=sph");
+        background-blend-mode: lighten;
+    }
+</style>
+{% endif %}
+<body>
+    {% if current_user.is_authenticated %}
+        {% if current_user.is_admin() %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        {% else %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        {% endif %}
+        <div class="container-fluid">
+            {% if current_user.is_admin() %}
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/admin_dashboard">Library Management System (LMS)</a>
+            </div>
+            {% else %}
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/dashboard">Library Management System (LMS)</a>
+            </div>
+            {% endif %}
+            <font style="color: white"><span><strong>Welcome: {{ user_name}}</strong></span></font>
+            <font style="color: white"><span><strong>Email: {{ email }}</strong></font>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                        My Profile
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/view_profile">View Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/edit_profile">Edit Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/update_password">Change Password</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br><br>
+    <span ><marquee class="fw-bold">This is library mangement system. Library opens at 8:00 AM and close at 8:00 PM</marquee></span><br>
+    {% if current_user.is_admin() %}
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd">
+        <div class="container-fluid">
+            
+            <ul class="nav navbar-nav navbar-center">
+              <li class="nav-item">
+                <a class="nav-link" href="/admin_dashboard">Dashboard</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown">Books </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/add_new_book">Add New Book</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/manage_book">Manage Books</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown">Category </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/add_category">Add New Category</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/manage_category">Manage Category</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown">Authors</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/add_author">Add New Author</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/manage_author">Manage Author</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/issue_book">Issue Book</a>
+              </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    {% endif %}
+    {% else %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Library Management System</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">User Login</a>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin_login">Admin Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/signup"></span>Signup</a>
+              </li>
+            </ul>
+        </div>
+    </nav>
+    {% endif %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul style="color:white" class="flashes list-unstyled">
+                {% for category, message in messages %}
+                    <li class="alert alert-{{ category }}">
+                        <i style="color: white;" class="fas {{ 'fa-check-circle' if category == 'success' else 'fa-exclamation-circle' }}"></i> {{ message }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+
+     <!-- jQuery -->
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+     <!-- Popper.js -->
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+     <!-- Bootstrap JS -->
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+
+</html>

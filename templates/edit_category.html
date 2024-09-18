@@ -1,0 +1,22 @@
+<!-- ./templates/edit_book.html -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+        <center><h4 style="border-color: black;">Edit Category</h4><br></center>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label style="border-color: black;" for="name">Category Name:</label>
+                        <input style="border-color: black;" type="text" class="form-control" name="category_name" value="{{ category_name }}" required>
+                    </div>
+                    <button type="submit" name="update_cat" class="btn btn-primary">Update Catogry</button>
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+
+{% endblock %}

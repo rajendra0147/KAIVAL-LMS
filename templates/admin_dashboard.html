@@ -1,0 +1,58 @@
+<!-- ./templates/admin_dashboard.html -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-3" style="margin: 0px ">
+            <div class="card bg-light" style=" width: 300px ">
+                <div class="card-header">Registered User</div>
+                <div class="card-body">
+                    <p class="card-text">No. total Users: {{ user_count }}</p>
+                    <a class="btn btn-danger" href="/view_registered_user" >View Registered Users</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" style="margin: 0px">
+            <div class="card bg-light" style="width: 300px">
+                <div class="card-header">Total Book</div>
+                <div class="card-body">
+                    <p class="card-text">No of books available: {{ book_count}}</p>
+                    <a class="btn btn-success" href="/view_registered_book" >View All Books</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" style="margin: 0px">
+            <div class="card bg-light" style="width: 300px">
+                <div class="card-header">Book Categories</div>
+                <div class="card-body">
+                    <p class="card-text">No of Book's Categories: {{ category_count}}</p>
+                    <a class="btn btn-warning" href="/view_registered_category" >View Categories</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" style="margin: 0px">
+            <div class="card bg-light" style="width: 300px">
+                <div class="card-header">No. of Authors</div>
+                <div class="card-body">
+                    <p class="card-text">No of Authors: {{ author_count }}</p>
+                    <a class="btn btn-primary" href="/view_registered_author" >View Authors</a>
+                </div>
+            </div>
+        </div>
+    </div><br><br>
+    <div class="row">
+        <div class="col-md-3" style="margin: 0px">
+            <div class="card bg-light" style="width: 300px">
+                <div class="card-header">Book Issued</div>
+                <div class="card-body">
+                    <p class="card-text">No of book issued: {{ issue_book_count }}</p>
+                    <a class="btn btn-success" href="/view_issued_book" >View Issued Books</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+    </div>
+
+{% endblock %}

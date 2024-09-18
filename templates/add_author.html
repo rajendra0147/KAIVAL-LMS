@@ -1,0 +1,21 @@
+<!-- ./templates/add_author.html -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+<center><h4 class="fw-bold">Add a new Author</h4><br></center>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 fw-bold">
+                <form action="/add_author" method="post">
+                    <div class="form-group">
+                        <label for="name">Author Name:</label>
+                        <input type="text" class="form-control" name="author_name" style="border-color: black;"required>
+                    </div>
+                    <button type="submit" name="add_author" class="btn btn-primary">Add Author</button>
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+{% endblock %}

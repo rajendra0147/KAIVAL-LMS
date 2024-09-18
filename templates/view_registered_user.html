@@ -1,0 +1,44 @@
+<!-- ./templates/view_registered_user.html -->
+
+
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<br>
+        <center><h4 class="fw-bold">Registered Users Detail</h4><br></center>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form>
+                    <table  class="table table-bordered bg-white" style="text-align: center">
+                        <thead>
+                            <tr>
+                                <th>Sr. No.</th>
+                                <th>Name</th>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                        {% for user in users %}
+                        {% if user.role != 'Admin' %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ user.username}}</td>
+                            <td>{{ user._id}}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.mobile }}</td>
+                            <td>{{ user.address }}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                </table>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        
+{% endblock %}
